@@ -51,6 +51,9 @@ wxCpService.accessTokenRefresh();
 
 
 ## 公众号第三方应用接入
+1、微信中通过url链接访问
+2、公众号菜单中访问
+
 
 公众号后台管理
 公众号第三方应用
