@@ -1,0 +1,54 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: orchid-supply
+  datasource:
+    url: jdbc:mysql://10.225.12.98:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&useSSL=false
+    username: root
+    password: root
+  #  spring boot默认静态文件处理;静态文件请求时必须加路径前缀
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+
+  thymeleaf:
+    prefix: classpath:/templates/ #模板文件位置
+    suffix: .html #模板文件后缀
+    cache: false #是否启用缓存
+    encoding: utf-8 #编码
+    mode: HTML #严格的HTML语法校验
+    servlet:
+      content-type: text/html
+
+mybatis-plus:
+  configuration:
+    auto-mapping-behavior: FULL
+    auto-mapping-unknown-column-behavior: WARNING
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: ASSIGN_ID
+      table-prefix:
+  log: true
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.orchid.wx.mp.entity
+
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+wx:
+  mp:
+    configs:
+    - appId: wxb4492b6697a78da9
+      secret: bf1a8c049b5b0d0b553e71f91b547a84
+      token: 7881060
+#        aesKey: 111
+#      - appId: 2222 （另一个公众号的appid，以下同上）
+#        secret: 1111
+#        token: 111
+#        aesKey: 111
